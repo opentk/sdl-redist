@@ -44,13 +44,13 @@ cmake -S . -B build && cmake --build build && cmake --install build
 #cmake -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON ..
 
 if ($LastExitCode -ne 0) {
-    throw 'SDL compilation setup failed'
+    throw 'SDL compilation setup failed: ' + $LastExitCode
 }
 
 make -j
 
 if ($LastExitCode -ne 0) {
-    throw 'SDL compilation failed'
+    throw 'SDL compilation failed: ' + $LastExitCode
 }
 
 popd
