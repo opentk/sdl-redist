@@ -8,9 +8,6 @@ $ErrorActionPreference = "Stop"
 
 [String]$SDL_SO_POSTFIX="0.$($SDL_MINOR_VERSION * 100).$($SDL_PATCH_VERSION)"
 
-# The built .so file will end in .so.3.3 for a version like 3.3.7, to get the correct file we need to pass "3.3" to the .csproj
-# [String]$GLFW_SHORT_VERSION = $GLFW_VERSION.Substring(0, $GLFW_VERSION.LastIndexOf("."))
-
 $buildVersionResult = $verBuild.ToString()
 $currentBranch=(git branch --show-current)
 Write-Output "Current Branch: $currentBranch"
