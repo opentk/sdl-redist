@@ -1,0 +1,39 @@
+name: OpenTK SDL Redistributable
+
+on:
+  workflow_dispatch:
+    inputs:
+  push:
+    branches:
+      - main
+      - develop
+jobs:
+  build:
+    env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix: 
+        os: [ubuntu-latest]
+
+    steps:
+    - name: Install X11 dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install xorg-dev
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Download dependencies and create Nuget Package
+      run: ./make_nuget.ps1 "" ${{ github.run_number }}
+      shell: pwsh
+    - uses: actions/upload-artifact@v3
+      with:
+        name: NugetPackage
+        path: ./artifacts/*.nupkg
+    - name: Deploy Nuget Package
+      run: dotnet nuget push ./artifacts/*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json

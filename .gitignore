@@ -1,0 +1,10 @@
+/bin
+/obj
+/docs
+/include
+/*.nupkg
+/artifacts/
+/bin/
+/obj/
+/tmp/
+/desktop.ini
