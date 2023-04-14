@@ -54,6 +54,11 @@
       <Pack>true</Pack>
     </Content>
 
+    <Content Include="README.md">
+      <PackagePath>README.md</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+
     <None Include="tmp/opentk.png" Pack="true" PackagePath="/"/>
 
     <!-- We need to add this file to get rid of the NU5128 warning. 
