@@ -1,7 +1,12 @@
 param([String]$projectDir, [int]$verBuild)
 
 $ErrorActionPreference = "Stop"
-[String]$SDL_VERSION="2.26.5"
+[int]$SDL_MAJOR_VERSION=2
+[int]$SDL_MINOR_VERSION=26
+[int]$SDL_PATCH_VERSION=5
+[String]$SDL_VERSION="$($SDL_MAJOR_VERSION).$($SDL_MINOR_VERSION).$($SDL_PATCH_VERSION)"
+
+[String]$SDL_SO_POSTFIX="0.$($SDL_MINOR_VERSION * 100).$($SDL_PATCH_VERSION)"
 
 # The built .so file will end in .so.3.3 for a version like 3.3.7, to get the correct file we need to pass "3.3" to the .csproj
 # [String]$GLFW_SHORT_VERSION = $GLFW_VERSION.Substring(0, $GLFW_VERSION.LastIndexOf("."))
@@ -34,4 +39,4 @@ return;
 
 $nuspec = [System.IO.Path]::Combine($projectDir, ".\sdl-redist.csproj")
 
-dotnet pack $nuspec -c Release -p:VERSION="$version" -p:GLFW_VERSION="$GLFW_VERSION" -p:GLFW_SHORT_VERSION="$GLFW_SHORT_VERSION" -o ./artifacts
+dotnet pack $nuspec -c Release -p:VERSION="$version" -p:SDL_VERSION="$SDL_VERSION" -p:SDL_SO_POSTFIX="$SDL_SO_POSTFIX" -o ./artifacts

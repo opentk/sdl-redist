@@ -4,7 +4,8 @@
     <NoBuild>true</NoBuild>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <IncludeSymbols>false</IncludeSymbols>
-    <RuntimeIdentifiers>win-x86;win-x64;osx-x64;osx-arm64;linux-x64</RuntimeIdentifiers>
+    <!-- FIXME: macos <RuntimeIdentifiers>win-x86;win-x64;osx-x64;osx-arm64;linux-x64</RuntimeIdentifiers>-->
+    <RuntimeIdentifiers>win-x86;win-x64;linux-x64</RuntimeIdentifiers>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageVersion>$(VERSION)</PackageVersion>
     
@@ -17,37 +18,41 @@
     <Description>SDL redistributables for OpenTK.</Description>
     <PackageIcon>opentk.png</PackageIcon>
   </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="tmp/glfw-$(GLFW_VERSION).bin.WIN64/lib-vc2019/*.dll">
+    <Content Include="tmp/win32-x64/*.dll">
       <PackagePath>runtimes/win-x64/native/</PackagePath>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="tmp/glfw-$(GLFW_VERSION).bin.WIN32/lib-vc2019/*.dll">
+    <Content Include="tmp/win32-x86/*.dll">
       <PackagePath>runtimes/win-x86/native/</PackagePath>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="tmp/glfw-$(GLFW_VERSION).bin.MACOS/lib-x86_64/*.dylib">
+    <!-- FIXME: Add macos binaries
+    <Content Include="tmp/macos/*.dylib">
       <PackagePath>runtimes/osx-x64/native/</PackagePath>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  <Content Include="tmp/glfw-$(GLFW_VERSION).bin.MACOS/lib-arm64/*.dylib">
+    <Content Include="tmp/glfw-$(SDL_VERSION).bin.MACOS/lib-arm64/*.dylib">
       <PackagePath>runtimes/osx-arm64/native/</PackagePath>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="tmp/src/build/src/*.so.$(GLFW_SHORT_VERSION)">
+    -->
+    <Content Include="tmp/src/build/*.so.$(SDL_SO_POSTFIX)">
       <PackagePath>runtimes/linux-x64/native/</PackagePath>
       <Pack>true</Pack>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
-    <Content Include="tmp/glfw-$(GLFW_VERSION).bin.WIN32/LICENSE.md">
-      <PackagePath>COPYING.md</PackagePath>
+    <Content Include="tmp/src/LICENSE.txt">
+      <PackagePath>LICENSE.txt</PackagePath>
       <Pack>true</Pack>
     </Content>
+
     <None Include="tmp/opentk.png" Pack="true" PackagePath="/"/>
 
     <!-- We need to add this file to get rid of the NU5128 warning. 
