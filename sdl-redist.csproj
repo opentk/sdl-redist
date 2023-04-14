@@ -11,6 +11,7 @@
     
     <PackageProjectUrl>https://www.libsdl.org/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     
     <PackageId>OpenTK.redist.SDL</PackageId>
     <Authors>Team OpenTK</Authors>

@@ -1,2 +1,2 @@
-# sdl-redist
-Redistributable for SDL
+# OpenTK SDL redist
+This is a package that contains prebuilt SDL binaries.
