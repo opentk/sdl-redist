@@ -35,8 +35,6 @@ $version = "$verMajor.$verMinor.$verPatch.$buildVersionResult"
 
 Write-Output $version
 
-return;
-
 $nuspec = [System.IO.Path]::Combine($projectDir, ".\sdl-redist.csproj")
 
 dotnet pack $nuspec -c Release -p:VERSION="$version" -p:SDL_VERSION="$SDL_VERSION" -p:SDL_SO_POSTFIX="$SDL_SO_POSTFIX" -o ./artifacts
