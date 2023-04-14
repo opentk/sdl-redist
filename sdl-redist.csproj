@@ -10,7 +10,7 @@
     <PackageVersion>$(VERSION)</PackageVersion>
     
     <PackageProjectUrl>https://www.libsdl.org/</PackageProjectUrl>
-    <PackageLicenseFile>COPYING.md</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     
     <PackageId>OpenTK.redist.sdl</PackageId>
     <Authors>Team OpenTK</Authors>
