@@ -17,18 +17,20 @@ if($currentBranch -eq "develop") {
 
 ./download_dependencies.ps1 $SDL_VERSION
 
-return
-# FIXME!
-$header = Get-Content([System.IO.Path]::Combine($projectDir, ".\tmp\src\include\SDL\sdl.h")) | Out-String
+$header = Get-Content([System.IO.Path]::Combine($projectDir, ".\tmp\src\build\include\SDL_version.h")) | Out-String
 
-if ($header -match '(?m)^#define\s+GLFW_VERSION_MAJOR\s+(\d+)\s*$') { $verMajor = $Matches[1] }
+if ($header -match '(?m)^#define\s+SDL_MAJOR_VERSION\s+(\d+)\s*$') { $verMajor = $Matches[1] }
 else { throw "Failed to parse major version number from header." }
-if ($header -match '(?m)^#define\s+GLFW_VERSION_MINOR\s+(\d+)\s*$') { $verMinor = $Matches[1] }
+if ($header -match '(?m)^#define\s+SDL_MINOR_VERSION\s+(\d+)\s*$') { $verMinor = $Matches[1] }
 else { throw "Failed to parse minor version number from header." }
-if ($header -match '(?m)^#define\s+GLFW_VERSION_REVISION\s+(\d+)\s*$') { $verPatch = $Matches[1] }
+if ($header -match '(?m)^#define\s+SDL_PATCHLEVEL\s+(\d+)\s*$') { $verPatch = $Matches[1] }
 else { throw "Failed to parse patch version number from header." }
 
 $version = "$verMajor.$verMinor.$verPatch.$buildVersionResult"
+
+Write-Output $version
+
+return;
 
 $nuspec = [System.IO.Path]::Combine($projectDir, ".\sdl-redist.csproj")
 

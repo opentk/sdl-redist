@@ -38,19 +38,16 @@ if (Test-Path tmp/src) {
 Rename-Item -Path tmp/SDL2-$SDL_VERSION -NewName src
 
 mkdir tmp/src/build
-pushd tmp/src/
-cmake -S . -B build && cmake --build build && cmake --install build
+Push-Location tmp/src/
 
-#cmake -DCMAKE_BUILD_TYPE=Release -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON ..
-
+cmake -S . -B build
 if ($LastExitCode -ne 0) {
-    throw 'SDL compilation setup failed: ' + $LastExitCode
+    throw '"cmake -S . -B build" failed: ' + $LastExitCode
 }
 
-make -j
-
+cmake --build build
 if ($LastExitCode -ne 0) {
-    throw 'SDL compilation failed: ' + $LastExitCode
+    throw '"cmake --build build" failed: ' + $LastExitCode
 }
 
-popd
+Pop-Location
