@@ -12,7 +12,7 @@
     <PackageProjectUrl>https://www.libsdl.org/</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     
-    <PackageId>OpenTK.redist.sdl</PackageId>
+    <PackageId>OpenTK.redist.SDL</PackageId>
     <Authors>Team OpenTK</Authors>
     <Owners>Team OpenTK</Owners>
     <Description>SDL redistributables for OpenTK.</Description>
