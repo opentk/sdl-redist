@@ -22,6 +22,14 @@ jobs:
       run: |
         apt-get update
         apt-get install -y xorg-dev
+    - name: Install build dependencies
+      run: |
+        apt-get install -y curl wget git cmake
+        VERSION_ID=$(awk -F= '/^VERSION_ID=/{gsub(/"/, "", $2); print $2}' /etc/os-release)
+        wget -q https://packages.microsoft.com/config/debian/$VERSION_ID/packages-microsoft-prod.deb
+        dpkg -i packages-microsoft-prod.deb
+        apt-get update
+        apt-get install -y powershell
     - uses: actions/checkout@v5
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
