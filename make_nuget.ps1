@@ -2,8 +2,8 @@ param([String]$projectDir, [int]$verBuild)
 
 $ErrorActionPreference = "Stop"
 [int]$SDL_MAJOR_VERSION=2
-[int]$SDL_MINOR_VERSION=26
-[int]$SDL_PATCH_VERSION=5
+[int]$SDL_MINOR_VERSION=32
+[int]$SDL_PATCH_VERSION=6
 [String]$SDL_VERSION="$($SDL_MAJOR_VERSION).$($SDL_MINOR_VERSION).$($SDL_PATCH_VERSION)"
 
 [String]$SDL_SO_POSTFIX="0.$($SDL_MINOR_VERSION * 100).$($SDL_PATCH_VERSION)"
