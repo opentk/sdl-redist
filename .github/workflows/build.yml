@@ -30,6 +30,9 @@ jobs:
         dpkg -i packages-microsoft-prod.deb
         apt-get update
         apt-get install -y powershell
+    - name: "Disable git safe directories"
+      run: |
+        git config --global --add safe.directory '*'
     - uses: actions/checkout@v5
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
