@@ -19,7 +19,7 @@ if($currentBranch -eq "develop") {
 
 ./download_dependencies.ps1 $SDL_VERSION
 
-$header = Get-Content([System.IO.Path]::Combine($projectDir, ".\tmp\src\build\include\SDL_version.h")) | Out-String
+$header = Get-Content([System.IO.Path]::Combine($projectDir, ".\tmp\src\include\SDL_version.h")) | Out-String
 
 if ($header -match '(?m)^#define\s+SDL_MAJOR_VERSION\s+(\d+)\s*$') { $verMajor = $Matches[1] }
 else { throw "Failed to parse major version number from header." }
