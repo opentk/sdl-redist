@@ -31,7 +31,7 @@ jobs:
     - name: Download dependencies and create Nuget Package
       run: ./make_nuget.ps1 "" ${{ github.run_number }}
       shell: pwsh
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v4
       with:
         name: NugetPackage
         path: ./artifacts/*.nupkg
