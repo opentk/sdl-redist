@@ -21,7 +21,7 @@ jobs:
     - name: Install X11 dependencies
       run: |
         apt-get update
-        apt-get install xorg-dev
+        apt-get install -y xorg-dev
     - uses: actions/checkout@v5
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v5
